@@ -1,0 +1,39 @@
+<main (keyup)="keyPressHandler($event)" tabindex="0">
+  <div class="data" #data>
+    <canvas #canvas (mousemove)="canvasMouseMoveHandler($event)" (mouseleave)="canvasOnMouseExitHandler()"></canvas>
+    <div class="inputs">
+      <h1> Sinus functions to be added </h1>
+
+
+      <form [formGroup]="form">
+        <div formArrayName="functions">
+          <div *ngFor="let func of functionForms.controls; let i=index" [formGroupName]="i" class="func-div">
+            <mat-form-field>
+              <mat-label>Magnitude</mat-label>
+              <input matInput type="text" formControlName="magnitude">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Period</mat-label>
+              <input matInput type="text" formControlName="period">
+            </mat-form-field>
+
+            <button mat-icon-button color="warn" (click)="deleteFunction(i)"> <mat-icon>delete</mat-icon> </button>
+
+          </div>
+        </div>
+        <button mat-raised-button color="primary" (click)="addFunction()"> Add New </button>
+
+        <br>
+        <mat-checkbox formControlName="drawComponents"> Show components </mat-checkbox>
+        <br>
+        <mat-checkbox formControlName="drawResult"> Show result </mat-checkbox>
+      </form>
+
+
+    </div>
+  </div>
+  <div class="options">
+    <h2>X: {{ currentMousePos.x }} - Y: {{ currentMousePos.y }}</h2>
+  </div>
+</main>

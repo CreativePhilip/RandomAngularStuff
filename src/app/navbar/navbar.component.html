@@ -1,0 +1,27 @@
+<mat-toolbar #toolbar>
+  <button mat-icon-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span>My App</span>
+  <span class="spacer"></span>
+  <span> {{ currentPathName }} </span>
+  <span class="spacer"></span>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" [style.height]="calculateHeight(toolbar._elementRef.nativeElement)">
+  <mat-drawer #drawer mode="over">
+    <mat-list>
+      <mat-list-item *ngFor="let option of paths">
+        <button class="drawer-button" mat-raised-button [color]="option.color" [routerLink]="option.path" (click)="drawer.close()">
+          <mat-icon>{{ option.icon }}</mat-icon>
+          {{ option.name }}
+      </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+
+  <div class="router-main">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

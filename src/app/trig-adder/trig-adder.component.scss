@@ -1,0 +1,36 @@
+.data {
+  display: flex;
+  height: 94%;
+}
+
+.inputs {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  overflow-y: auto;
+}
+
+.options {
+  height: 4%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+canvas {
+  height: 100%;
+  width: 65%;
+
+  border: 1px black solid;
+}
+
+main {
+  height: 100%;
+}
+
+
+.func-div {
+  display: flex;
+}
